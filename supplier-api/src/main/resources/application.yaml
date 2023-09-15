@@ -1,0 +1,17 @@
+server:
+  port: 7701
+
+# Resilience
+resilience4j:
+  ratelimiter:
+    instances:
+      save-order:
+        limit-for-period: 10
+        limit-refresh-period: 5s
+        timeout-duration: 0
+  retry:
+    instances:
+      save-order:
+        max-attempts: 5
+        wait-duration: 2s
+        #retry-exceptions: org.springframework.web.client.ResourceAccessException
